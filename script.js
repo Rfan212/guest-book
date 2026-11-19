@@ -1,5 +1,3 @@
-// DATA DUMMY
-
 const projects = [];
 
 function renderProjects() {
@@ -11,15 +9,22 @@ function renderProjects() {
     const project = projects[i];
 
     projectsHTML += `
-        <div class="card">
-            <div class="card-body">
-                <h5>
-                <i data-feather="user"></i>
-                ${project.name}
-                </h5>
-                <p>${project.description}</p>
-            </div>
-        </div>`;
+    <div class="card">
+     <div class="card-body">
+      <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+              <h5>
+                  <i data-feather="user"></i>
+                  ${project.name}
+              </h5>
+          </li>
+
+          <li class="list-group-item">
+              ${project.description}
+          </li>
+      </ul>
+      </div>
+    </div>`;
   }
   container.innerHTML = projectsHTML;
 
@@ -34,8 +39,13 @@ const form = document.getElementById('projectForm');
 form.addEventListener('submit', function (event) {
   event.preventDefault();
 
-  const name = document.getElementById('projectName').value;
-  const description = document.getElementById('fieldTextarea').value;
+  const name = document.getElementById('projectName').value.trim();
+  const description = document.getElementById('fieldTextarea').value.trim();
+
+  if (name === '' || description === '') {
+    alert('Harap jangan sampai kosong!');
+    return;
+  }
 
   const newProject = {
     id: projects.length + 1,
