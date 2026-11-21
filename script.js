@@ -9,7 +9,7 @@ function renderProjects() {
     const project = projects[i];
 
     projectsHTML += `
-    <div class="card">
+    <li class="card">
      <div class="card-body">
       <ul class="list-group list-group-flush">
           <li class="list-group-item">
@@ -24,7 +24,7 @@ function renderProjects() {
           </li>
       </ul>
       </div>
-    </div>`;
+    </li>`;
   }
   container.innerHTML = projectsHTML;
 
